@@ -59,6 +59,10 @@ public class Game2048Core {
     }
     
     public boolean isGameOver() {
+        if (Arrays.stream(grids).min().getAsInt() == 0) {
+            return false;
+        }
+        
         int[] tmpGrids = grids.clone();
         for (int i = 0; i < Direction.values().length; i++) {
             if (action.execute(tmpGrids, Direction.values()[i]).changed) {
